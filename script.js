@@ -99,7 +99,15 @@ window.addEventListener("keydown", function (event) {
   }
 });
 
-
-window.addEventListener("touchend", (event) => {
-  event.preventDefault();
-});
+let lastTouch = 0;
+window.addEventListener(
+  "touchend",
+  (event) => {
+    let now = new Date().getTime();
+    if (now - lastTouch <= 300) {
+      event.preventDefault();
+    }
+    lastTouch = now;
+  },
+  false
+);
