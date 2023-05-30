@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <h1 id="display">0</h1>
+        <small class="memory" id="memory"></small>
+      </div>
+      <div class="buttons">
+        <button class="clear" id="clear-all" value="AC">AC</button>
+        <button class="short-function" value="factorial">x!</button>
+        <button class="short-function" value="sqrt">√</button>
+        <button class="short-function" value="pow">x²</button>
+        <button class="operator" value="/">÷</button>
+
+        <button class="clear" id="clear" value="C">&larr;</button>
+        <button value="7">7</button>
+        <button value="8">8</button>
+        <button value="9">9</button>
+        <button class="operator" value="*">×</button>
+
+        <button class="short-function" value="percent">%</button>
+        <button value="4">4</button>
+        <button value="5">5</button>
+        <button value="6">6</button>
+        <button class="operator" value="-">-</button>
+
+        <button class="absolute" value="+/-">±</button>
+        <button value="1">1</button>
+        <button value="2">2</button>
+        <button value="3">3</button>
+        <button class="operator" value="+">+</button>
+
+        <button class="decimal" value=".">.</button>
+        <button value="00">00</button>
+        <button value="0">0</button>
+        <button class="operator equal-sign" value="=">=</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
