@@ -98,3 +98,16 @@ window.addEventListener("keydown", function (event) {
     useOperator(event.key);
   }
 });
+
+let lastTouch = 0;
+document.addEventListener(
+  "touchend",
+  (event) => {
+    let now = new Date().getTime();
+    if (now - lastTouch <= 300) {
+      event.preventDefault();
+    }
+    lastTouch = now;
+  },
+  false
+);
