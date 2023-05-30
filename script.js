@@ -76,3 +76,22 @@ buttons.forEach((btn) => {
     }
   };
 });
+
+window.addEventListener("keydown", function (event) {
+  event.preventDefault();
+
+  if (/^[0-9]$/.test(event.key)) {
+    showNumberOnDisplay(event.key);
+  } else if (event.key === "Backspace") {
+    handleClear("C");
+  } else if (event.key === "Enter") {
+    useOperator("=")
+  } else if (
+    event.key === "+" ||
+    event.key === "-" ||
+    event.key === "*" ||
+    event.key === "/"
+  ) {
+    useOperator(event.key)
+  }
+});
