@@ -13,8 +13,8 @@ const showNumberOnDisplay = (number) => {
 const useOperator = (operator) => {
   if (display.textContent !== "0") {
     isNaN(+memory.textContent.slice(-1))
-      ? (memory.textContent += display.textContent + operator)
-      : (memory.textContent = display.textContent + operator);
+      ? (memory.textContent += `(${display.textContent})${operator}`)
+      : (memory.textContent = `${display.textContent}${operator}`);
     display.textContent = "0";
   }
 
