@@ -104,7 +104,7 @@ window.addEventListener(
   "touchend",
   (event) => {
     let now = new Date().getTime();
-    if (now - lastTouch <= 300) {
+    if (now - lastTouch <= 100) {
       event.preventDefault();
     }
     lastTouch = now;
