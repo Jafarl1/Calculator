@@ -21,6 +21,7 @@ const useOperator = (operator) => {
   let result = isNaN(+memory.textContent.slice(-1))
     ? eval(memory.textContent.slice(0, -1))
     : memory.textContent;
+  result = Math.round(result * 100) / 100;
 
   if (result && result !== undefined) {
     operator === "="
@@ -78,20 +79,22 @@ buttons.forEach((btn) => {
 });
 
 window.addEventListener("keydown", function (event) {
-  event.preventDefault();
-
   if (/^[0-9]$/.test(event.key)) {
     showNumberOnDisplay(event.key);
   } else if (event.key === "Backspace") {
     handleClear("C");
+  } else if (event.key === "Delete") {
+    handleClear("AC");
   } else if (event.key === "Enter") {
-    useOperator("=")
+    useOperator("=");
+  } else if (event.key === "." || event.key === ",") {
+    addDecimal();
   } else if (
     event.key === "+" ||
     event.key === "-" ||
     event.key === "*" ||
     event.key === "/"
   ) {
-    useOperator(event.key)
+    useOperator(event.key);
   }
 });
