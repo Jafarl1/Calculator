@@ -2,6 +2,17 @@ const buttons = document.querySelectorAll("button");
 const display = document.getElementById("display");
 const memory = document.getElementById("memory");
 
+const checkDisplay = () => {
+  display.style.fontSize =
+    display.textContent.length > 20
+      ? "20px"
+      : display.textContent.length > 16
+      ? "28px"
+      : display.textContent.length > 12
+      ? "36px"
+      : "46px";
+};
+
 const showNumberOnDisplay = (number) => {
   if (number === "00" && display.textContent === "0") return;
 
@@ -30,8 +41,37 @@ const useOperator = (operator) => {
   }
 };
 
+const getFactorial = (number) => {
+  let result = number;
+  if (number < 0) {
+    return -1;
+  } else if (number === 0 || number === 1) {
+    return number;
+  }
+  while (number > 1) {
+    number--;
+    result *= number;
+  }
+  return result;
+};
+
 const shortFunction = (event) => {
-  console.log(event);
+  switch (event) {
+    case "%":
+      display.textContent /= 100;
+      break;
+    case "!":
+      display.textContent = getFactorial(+display.textContent);
+      break;
+    case "sqrt":
+      display.textContent = Math.sqrt(+display.textContent);
+      break;
+    case "pow":
+      display.textContent = Math.pow(display.textContent, 2);
+      break;
+    default:
+      break;
+  }
 };
 
 const handleClear = (value) => {
@@ -75,6 +115,7 @@ buttons.forEach((btn) => {
     } else if (btn.classList.contains("decimal")) {
       addDecimal();
     }
+    checkDisplay();
   };
 });
 
@@ -89,6 +130,8 @@ window.addEventListener("keydown", function (event) {
     useOperator("=");
   } else if (event.key === "." || event.key === ",") {
     addDecimal();
+  } else if (event.key === "!" || event.key === "%") {
+    shortFunction(event.key);
   } else if (
     event.key === "+" ||
     event.key === "-" ||
@@ -97,6 +140,7 @@ window.addEventListener("keydown", function (event) {
   ) {
     useOperator(event.key);
   }
+  checkDisplay();
 });
 
 let lastTouch = 0;
